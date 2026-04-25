@@ -103,7 +103,7 @@ class Desc(Entry):
 class Sun:
     date: str
     rise: str
-    tansit_time: str
+    transit_time: str
     transit_alt: str
     set: str
 

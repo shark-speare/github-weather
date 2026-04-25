@@ -28,6 +28,18 @@ class EntryRaw(TypedDict):
     #綜合描述
     WeatherDescription: NotRequired[str]
 
+    #日出日落
+    Date: NotRequired[str]
+    BeginCivilTwilightTime: NotRequired[str]
+    SunRiseTime: NotRequired[str]
+    SunRiseAZ: NotRequired[str]
+    SunTransitTime: NotRequired[str]
+    SunTransitAlt: NotRequired[str]
+    SunSetTime: NotRequired[str]
+    SunSetAZ: NotRequired[str]
+    EndCivilTwilightTime: NotRequired[str]
+
+
 TimeRaw =  list[EntryRaw]
 
 class ElementRaw(TypedDict):

@@ -69,3 +69,6 @@ class LocationRaw(TypedDict):
 
     #綜合描述
     WeatherDescription: ElementRaw
+
+    #日出日落
+    sunRise: ElementRaw

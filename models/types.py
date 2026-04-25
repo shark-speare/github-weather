@@ -71,4 +71,4 @@ class LocationRaw(TypedDict):
     WeatherDescription: ElementRaw
 
     #日出日落
-    sunRise: ElementRaw
+    sunRise: list[EntryRaw]

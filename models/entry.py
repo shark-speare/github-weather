@@ -111,7 +111,7 @@ class Desc(Entry):
         )
     
 @dataclass
-class Sun(Entry):
+class Sun:
     date: str
     rise: str
     tansit_time: str
@@ -121,7 +121,6 @@ class Sun(Entry):
     @classmethod
     def from_dict(cls, data:EntryRaw):
         return cls(
-            **cls._base_args(data),
             date=data["Date"],
             rise=data["SunRiseTime"],
             transit_time=data["SunTransitTime"],

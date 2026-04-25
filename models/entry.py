@@ -30,17 +30,6 @@ class Temperature(Entry):
             **cls._base_args(data),
             value=data["Temperature"]
         )
-
-@dataclass
-class Temperature(Entry):
-    value: str
-
-    @classmethod
-    def from_dict(cls, data:EntryRaw):
-        return cls(
-            **cls._base_args(data),
-            value=data["Temperature"]
-        )
     
 @dataclass
 class Rain(Entry):

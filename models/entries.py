@@ -11,8 +11,8 @@ class Entry(ABC):
     @classmethod
     def _base_args(cls, data:EntryRaw):
         return {
-            "start": data["StartTime"],
-            "end": data["EndTime"]
+            "start": dt.datetime.fromisoformat(data["StartTime"]),
+            "end": dt.datetime.fromisoformat(data["EndTime"])
         }
     
     @classmethod

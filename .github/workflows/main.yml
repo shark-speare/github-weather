@@ -13,22 +13,28 @@ jobs:
     steps:
       - name: Checkout main (for script)
         uses: actions/checkout@v4
+        with:
+          ref: main  # 先 checkout main 拿到 main.py
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
 
-      - name: Run main.py
-        env:
-          WEATHER: ${{ secrets.WEATHER }}
-        run: uv run main.py
-    
-      - name: Push output to data branch
+      - name: Checkout data branch
         run: |
           git fetch origin data
-          git checkout data
-          git checkout main -- weather/   # 只帶 output 資料夾
-          git add weather/
+          git checkout data  # 切換到 data 分支
+
+      - name: Copy main.py from main
+        run: |
+          git checkout main -- main.py  # 只把 main.py 帶過來
+
+      - name: Run main.py
+        run: uv run main.py  # 現在是在 data 分支的檔案環境下執行
+
+      - name: Commit and push to data branch
+        run: |
+          git add .
           git diff --staged --quiet || git commit -m "chore: update data [skip ci]"
           git push origin data

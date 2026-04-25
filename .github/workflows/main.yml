@@ -20,6 +20,8 @@ jobs:
           enable-cache: true
 
       - name: Run main.py
+        env:
+          WEATHER: ${{ secrets.WEATHER }}
         run: uv run main.py
     
       - name: Push output to data branch

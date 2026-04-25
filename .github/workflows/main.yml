@@ -32,7 +32,7 @@ jobs:
 
       - name: Run main.py
         env:
-          WEATHER: ${{ secret.WEATHER }}
+          WEATHER: ${{ secrets.WEATHER }}
         run: uv run main.py  # 現在是在 data 分支的檔案環境下執行
 
       - name: Commit and push to data branch

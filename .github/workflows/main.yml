@@ -1,0 +1,32 @@
+# .github/workflows/scheduled.yml
+name: Scheduled Python Job
+
+on:
+  schedule:
+    - cron: '0 * */1 * *'
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main (for script)
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Run main.py
+        run: uv run main.py
+    
+      - name: Push output to data branch
+        run: |
+          git fetch origin data
+          git checkout data
+          git checkout main -- output/   # 只帶 output 資料夾
+          git add output/
+          git diff --staged --quiet || git commit -m "chore: update data [skip ci]"
+          git push origin data

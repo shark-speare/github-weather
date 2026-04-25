@@ -9,7 +9,7 @@ load_dotenv()
 url = "https://opendata.cwa.gov.tw/linked/graphql"
 
 query = """
-query forecast($city: String!, $today: String!) {
+query forecast($city: String!) {
     forecast(LocationName: $city) {
         Locations {
             LocationName,
@@ -78,7 +78,7 @@ query forecast($city: String!, $today: String!) {
                 }
             },
 
-            sunRise (timeTo: $today) {
+            sunRise {
                 Date,
                 BeginCivilTwilightTime
                 SunRiseTime,

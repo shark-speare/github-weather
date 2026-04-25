@@ -28,7 +28,7 @@ jobs:
         run: |
           git fetch origin data
           git checkout data
-          git checkout main -- output/   # 只帶 output 資料夾
-          git add output/
+          git checkout main -- weather/   # 只帶 output 資料夾
+          git add weather/
           git diff --staged --quiet || git commit -m "chore: update data [skip ci]"
           git push origin data
